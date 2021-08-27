@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class inServer {
     public static void main(String[] args) {
@@ -12,8 +14,8 @@ public class inServer {
 class MServer extends JFrame{
         public MServer() {
             setBounds(300, 400, 300, 400);
-            Lclient CL = new Lclient();
-            add(CL);
+            LServer SE = new LServer();
+            add(SE);
             setVisible(true);
             }
         }
@@ -32,8 +34,16 @@ class MServer extends JFrame{
                 Scamp3 = new JTextField(20);
                 add(Scamp3);
                 Sboton = new JButton("Calc");
+                sendtext calc = new sendtext();
+                Sboton.addActionListener(calc);
                 add(Sboton);
+            }
+            private class sendtext implements ActionListener{
 
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    System.out.println(Scamp1.getText());
+                }
             }
 
             private JTextField Scamp1;

@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class inClient {
@@ -29,10 +31,20 @@ class Lclient extends JPanel{
         Ccamp3 = new JTextField(20);
         add(Ccamp3);
         Cboton = new JButton("Calc");
+        sendtext cacl = new sendtext();
+        Cboton.addActionListener(cacl);
+
         add(Cboton);
 
 
 
+    }
+    private class sendtext implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            System.out.println("Funca");
+        }
     }
 
     private JTextField Ccamp1;
