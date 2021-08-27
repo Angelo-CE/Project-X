@@ -1,3 +1,4 @@
+/*
 package Server;
 
 import java.io.IOException;
@@ -15,8 +16,12 @@ public class ServerThread extends Thread {
     public void run(){
 
     }
+    void sendMessages(String message){
+
+    }
     public Set<server> getServer(){return server;}
 
 
 
 }
+*/
