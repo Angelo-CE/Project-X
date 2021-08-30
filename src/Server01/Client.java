@@ -23,7 +23,7 @@ public class Client {
             int nm3 = Integer.parseInt(JOptionPane.showInputDialog(" Peso del Producto: "));
             flag = true;
 
-            /*
+
             if (nm1 == Integer.parseInt(null)){
                 s.close();
             } else if(nm2 == Integer.parseInt(null)){
@@ -31,7 +31,7 @@ public class Client {
 
             }else if (nm3 == Integer.parseInt(null)){
                 s.close();
-            }*/
+            }
 
             try {
                 while (flag) {
