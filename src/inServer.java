@@ -8,8 +8,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class inServer extends IOException {
+/*
+* Clase inServer, esta ejecuta el Sockect principal.
+* Contiene el metodo Main
+*
+ */
 
+public class inServer extends IOException {
+    // Se crea el puerto del Socket servidor
     ServerSocket ssocket = new ServerSocket(4001);
     Socket s = ssocket.accept();
     DataInputStream in = new DataInputStream(s.getInputStream());
@@ -17,7 +23,6 @@ public class inServer extends IOException {
 
     public Socket connects(){
         return s;
-
     }
     public ServerSocket connectss(){
         return ssocket;
@@ -30,23 +35,16 @@ public class inServer extends IOException {
     public static void main(String[] args) throws IOException {
         MServer marco1 = new MServer();
         marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        String Name =JOptionPane.showInputDialog("Introduzca el IP de usuario");
         inServer func = new inServer();
         System.out.println("Connection Established");
         Scanner scanner = new Scanner(System.in);
 
-
-
-
-
-
         while(true) {
-            func.connects();
             func.connectss();
-
-
+            func.connects();
             String msg = scanner.nextLine();
-            func.out.writeUTF("[User0]" + msg);
-
+            func.out.writeUTF("["+Name+"]" + msg);
             String entrance = func.in.readUTF();
             System.out.println(entrance);
 
@@ -54,23 +52,35 @@ public class inServer extends IOException {
     }
 }
 
-
-
+    /*
+    * Clase Mserver, Esta contiene la configuracion de la interface
+    * Ademas de Construirla
+    * Ningun Parametro
+     */
 class MServer extends JFrame{
         public MServer() {
-            setBounds(300, 400, 300, 400);
+            setBounds(600, 600, 600, 600);
             LServer SE = new LServer();
             add(SE);
             setVisible(true);
             }
         }
 
-
+        /*
+        *  Clase Lserver, Esta contiene los campos de Texto y el boton
+        * Ademas su constructor
+        *
+         */
 
         class LServer extends JPanel {
+            public double Calc;
+            public static JTextField Scamp1;
+            public static JTextField Scamp2;
+            public static JTextField Scamp3;
+            public static JButton Sboton;
             public LServer() {
 
-                JLabel text = new JLabel("User0");
+                JLabel text = new JLabel("Introduzca los valores en orden de: Producto, Porcentaje y Peso");
                 add(text);
                 Scamp1 = new JTextField(20);
                 add(Scamp1);
@@ -83,8 +93,18 @@ class MServer extends JFrame{
                 Sboton.addActionListener(calc);
                 add(Sboton);
             }
+            /*
+            * Clase Fserver, esta es un Accionador, contiene el metodo
+            * que hace el calculo (No funciona, solo en consola)
+             */
             private class FServer implements ActionListener{
 
+                /*
+                * Metodo actionPerformed, recoje lo escrito en el campo de texto
+                * lo convierte de String a en entero, realiza el calculo y despues lo vuelve
+                *  a convertir en String para realizar el print.
+                * Dato: No se muestra en interface
+                 */
 
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
@@ -103,9 +123,4 @@ class MServer extends JFrame{
                     }
                 }
             }
-            public double Calc;
-            public static JTextField Scamp1;
-            public static JTextField Scamp2;
-            public static JTextField Scamp3;
-            public static JButton Sboton;
         }
